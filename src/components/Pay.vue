@@ -120,30 +120,26 @@
     </tr>
      
         </table>
-        
-
-
-
-        
-
+       
      
         
         
-         <div align=center>
-           <br><br>
-          <span
-           
-            @click="isSelected(item) ?  unselect() : onGoClick(item)"
-          >     
-        <a class="btn btn-secondary btn-lg btn-block" @click="isSelected(item)" >ดำเนินการสั่งซื้อ</a>
-        
-          </span>
-
-        </div>
+       
      
  </div>
      
     </div>
+  <div  v-for="(item) in items" :key="item._id"  >
+     <p  v-for="(use) in users" :key="use._id" >
+<center>
+          <span @click="isSelected(item) ?  unselect() : onGoClick(item,use)" >     
+            <a class="btn btn-secondary btn-lg btn-block" @click="isSelected(item)" >ดำเนินการสั่งซื้อ</a>
+        
+          </span>
+</center>
+        </p>
+        </div>
+    
   </div>
 </template>
 
@@ -158,6 +154,11 @@ export default {
          item_i:this.$route.params.ITEM,
       items: [],
       users: [],
+       NameUser:"",
+        AddressUser: "",
+         ItemUser: "",
+          TypeUser: "",
+           NumUser: "",
       Numitem:"",
       Name: "",
        Names: "",
@@ -210,7 +211,9 @@ async select(item) {
     
   
   methods: {
-     async onGoClick(item) {
+     async onGoClick(item,use) {
+       await this.addItem(item,use)
+  
         await this.removeItem(item)
        
  this.$router.push({ path: "Show" });
@@ -223,23 +226,23 @@ async select(item) {
         
       
       },
-    async addItem() {
-      const response = await axios.post("http://backjs.app.ruk-com.cloud/api/buys/", {
+    async addItem(item,use) {
+    
+      const response = await axios.post("http://backjs.app.ruk-com.cloud/api/historys/", {
      
-        Name: this.Name,
+        NameUser: use.Names,
         
-        Type: this.Type,
-        Num: this.Num,
-        Color: this.Color,
-        Price: this.Price
+        AddressUser: use.Addresss,
+        ItemUser: item.Name,
+        TypeUser:item.Type,
+        NumUser: item.Num
+        
       });
+       
       this.items.push(response.data);
-      this.Name = "";
-     
-      this.Type = "";
-       this.Num = "";
-      this.Color = "";
-      this.Price = "";
+   
+       
+      
     },
     async removeItem(item) {
       await axios.delete("http://backjs.app.ruk-com.cloud/api/buys/" + item._id);

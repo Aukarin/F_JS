@@ -26,6 +26,17 @@
             </li>
             
 
+ <div  v-for="(item) in items" :key="item._id"  >
+             <li class="nav-item" >
+              <div  v-if="items.length == 1 ">
+        
+            <router-link to="/My" class="nav-link">ที่ต้องได้รับ</router-link>
+          </div>
+            </li>
+
+       
+
+      </div>
         
             <li class="nav-item"   >
 
@@ -58,7 +69,7 @@
             <router-link to="/Sing" class="nav-link">Sing up</router-link>
           </div>
             </li>
-
+          
       
 
 
@@ -85,7 +96,6 @@
 
 
 <script>
-
 import axios from "axios";
 export default {
   name: "App",
@@ -127,7 +137,7 @@ async select(item) {
     this.editedPRICE = item.Price;
     },
   async mounted() {
-    
+   
     
     const response = await axios.get("http://backjs.app.ruk-com.cloud/api/statuss/");
   

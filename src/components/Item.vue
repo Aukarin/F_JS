@@ -18,6 +18,9 @@
 
 <tr>
         <td>
+           <div class="control">
+        <a class="button is-info" @click="onGoSell"  >รายการ</a>
+      </div>
     <div class="field has-addons">
        
       <div class="control is-expanded">
@@ -176,6 +179,13 @@ export default {
     this.items = response.data;
   },
   methods: {
+     async onGoSell() {
+       
+ this.$router.push({ path: "/Sell" });
+     
+    
+      
+      },
     async addItem() {
 
       const response = await axios.post("http://backjs.app.ruk-com.cloud/api/bucketListItems/", {

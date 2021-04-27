@@ -16,11 +16,29 @@ import Buy from "./components/Buy.vue";
 import Pay from "./components/Pay.vue";
 import Image from "./components/Image.vue";
 import File from "./components/SingleFile.vue";
+import Sell from "./components/Sell.vue";
+import Admin from "./components/Item.vue";
+import My from "./components/My.vue";
 
 
 Vue.use(VueRouter);
 
 const routes = [
+  {
+    name: "Sell",
+    path: "/Sell",
+    component: Sell
+  },
+  {
+    name: "My",
+    path: "/My",
+    component: My
+  },
+  {
+    name: "Admin",
+    path: "/Admin",
+    component: Admin
+  },
   {
     name: "File",
     path: "/File",
