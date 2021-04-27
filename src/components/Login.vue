@@ -164,6 +164,7 @@ this.Sta='1'
       this.Pass = " ";
       this.Sta = " ";
        this.$router.push({ path:"/Show" });
+        this.$router.go(this.$router.currentRoute)
     
     },
     async removeItem(item, i) {
