@@ -126,7 +126,7 @@
           
 
 
-<div class="column is-narrow">
+<div v-if="editedNUM<=item.Num" class="column is-narrow">
           <span
             class="icon has-text-info"
             @click="isSelected(item) ? updateItem(item, i,editedNUM) : select(item)"
@@ -134,6 +134,12 @@
             <i class="material-icons">{{isSelected(item) ? 'ตกลง': ''}}</i>
           </span>
         </div>
+     <div v-if="editedNUM>item.Num" class="column is-narrow">
+       <span
+            class="icon has-text-info">
+       <i class="material-icons">ตกลง</i> </span>
+        </div>
+     
      
 
       </div>
