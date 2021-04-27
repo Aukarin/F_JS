@@ -122,7 +122,7 @@ async select(item) {
   async mounted() {
     
     
-    const response = await axios.get("api/users/");
+    const response = await axios.get("http://backjs.app.ruk-com.cloud/api/users/");
   
     this.items = response.data;
    
@@ -151,7 +151,7 @@ async select(item) {
       
 this.Sta='1'
       
-      const response = await axios.post("api/statuss/", {
+      const response = await axios.post("http://backjs.app.ruk-com.cloud/api/statuss/", {
         User: this.user,
         Pass: this.pass,
         Names: item.Name ,
@@ -167,7 +167,7 @@ this.Sta='1'
     
     },
     async removeItem(item, i) {
-      await axios.delete("api/buys/" + item._id);
+      await axios.delete("http://backjs.app.ruk-com.cloud/api/buys/" + item._id);
       this.items.splice(i, 1);
     },
     select(item) {
@@ -191,7 +191,7 @@ this.Sta='1'
     async updateItemA(item, i,editedNUM) {
       {{this.editedNUM = item.Num-editedNUM }}
       
-      const response = await axios.put("api/bucketListItems/" + item._id , {
+      const response = await axios.put("http://backjs.app.ruk-com.cloud/api/bucketListItems/" + item._id , {
     
         Num: this.editedNUM,
       });
@@ -201,7 +201,7 @@ this.Sta='1'
       
     },
     async updateItem(item, i,editedNUM) {
-      const response = await axios.post("api/buys/" , {
+      const response = await axios.post("http://backjs.app.ruk-com.cloud/api/buys/" , {
     
         Name: this.editedNAME,
         Type:this.editedTYPE ,

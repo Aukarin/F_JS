@@ -188,12 +188,12 @@ async select(item) {
   async mounted() {
     
     
-    const response = await axios.get("api/bucketListItems/");
+    const response = await axios.get("http://backjs.app.ruk-com.cloud/api/bucketListItems/");
   
     this.items = response.data;
    
     
-    const responses = await axios.get("api/statuss/");
+    const responses = await axios.get("http://backjs.app.ruk-com.cloud/api/statuss/");
   
     this.users = responses.data;
     
@@ -226,7 +226,7 @@ async select(item) {
       
       },
     async addItem() {
-      const response = await axios.post("api/buys/", {
+      const response = await axios.post("http://backjs.app.ruk-com.cloud/api/buys/", {
      
         Name: this.Name,
         
@@ -242,7 +242,7 @@ async select(item) {
       this.Price = "";
     },
     async removeItem(item, i) {
-      await axios.delete("api/buys/" + item._id);
+      await axios.delete("http://backjs.app.ruk-com.cloud/api/buys/" + item._id);
       this.items.splice(i, 1);
     },
     select(item) {
@@ -266,7 +266,7 @@ async select(item) {
     async updateItemA(item, i,editedNUM) {
       {{this.editedNUM = item.Num-editedNUM }}
       
-      const response = await axios.put("api/bucketListItems/" + item._id , {
+      const response = await axios.put("http://backjs.app.ruk-com.cloud/api/bucketListItems/" + item._id , {
     
         Num: this.editedNUM,
       });
@@ -276,7 +276,7 @@ async select(item) {
       
     },
     async updateItem(item, i,editedNUM) {
-      const response = await axios.post("api/buys/" , {
+      const response = await axios.post("http://backjs.app.ruk-com.cloud/api/buys/" , {
     
         Name: this.editedNAME,
         Type:this.editedTYPE ,

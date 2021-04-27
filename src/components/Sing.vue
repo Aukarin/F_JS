@@ -119,14 +119,14 @@ export default {
     };
   },
   async mounted() {
-    const response = await axios.get("api/users/");
+    const response = await axios.get("http://backjs.app.ruk-com.cloud/api/users/");
     this.items = response.data;
   },
   methods: {
    
     async addItem() {
        this.Sta = '0'
-      const response = await axios.post("api/users/", {
+      const response = await axios.post("http://backjs.app.ruk-com.cloud/api/users/", {
       User: this.User,
        Pass: this.Pass,
         Name: this.Name,
@@ -148,7 +148,7 @@ export default {
  this.$router.push({ path : "/Login" }); 
     },
     async removeItem(item, i) {
-      await axios.delete("api/users/" + item._id);
+      await axios.delete("http://backjs.app.ruk-com.cloud/api/users/" + item._id);
       this.items.splice(i, 1);
     },
     select(item) {
@@ -170,7 +170,7 @@ export default {
       
     },
     async updateItem(item, i) {
-      const response = await axios.put("api/users/" + item._id, {
+      const response = await axios.put("http://backjs.app.ruk-com.cloud/api/users/" + item._id, {
     
         Name: this.editedNAME,
         Address:this.editedADD ,

@@ -92,7 +92,7 @@ export default {
     };
   },
   async mounted() {
-    const response = await axios.get("api/bucketListItems/");
+    const response = await axios.get("http://backjs.app.ruk-com.cloud/api/bucketListItems/");
     this.items = response.data;
   },
   methods: {
@@ -104,7 +104,7 @@ export default {
       },
 
     async addItem() {
-      const response = await axios.post("api/bucketListItems/", {
+      const response = await axios.post("http://backjs.app.ruk-com.cloud/api/bucketListItems/", {
      
         Name: this.Name,
         
@@ -119,7 +119,7 @@ export default {
       this.Price = "";
     },
     async removeItem(item, i) {
-      await axios.delete("api/bucketListItems/" + item._id);
+      await axios.delete("http://backjs.app.ruk-com.cloud/api/bucketListItems/" + item._id);
       this.items.splice(i, 1);
     },
     select(item) {
@@ -140,7 +140,7 @@ export default {
       
     },
     async updateItem(item, i) {
-      const response = await axios.put("api/bucketListItems/" + item._id, {
+      const response = await axios.put("http://backjs.app.ruk-com.cloud/api/bucketListItems/" + item._id, {
     
         Name: this.editedNAME,
         Type:this.editedTYPE ,
